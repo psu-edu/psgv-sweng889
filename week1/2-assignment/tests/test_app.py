@@ -1,4 +1,4 @@
-from app import load_report
+from app import load_report, clean_text
 
 
 def test_load_report(tmp_path):
@@ -11,3 +11,11 @@ def test_load_report(tmp_path):
     text = load_report(report)
 
     assert text == "AI assists software engineering."
+
+
+def test_clean_text():
+    text = "  HELLO  world!   This is a TEST.  "
+    cleaned = clean_text(text)
+    
+    # Current behavior: returns text unchanged
+    assert cleaned == text
