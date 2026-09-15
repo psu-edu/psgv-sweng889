@@ -177,6 +177,7 @@ The script should implement the following:
    - Load gradient_boosting_model.pkl
    - Load random_forest_model.pkl
    - Load scaler.pkl (for reference)
+   #- The application shall allow the user to provide the required input and receive a bike-demand prediction.
 2. Load test data:
    - Load test.csv from data/processed/
    - Separate features (X_test) and target (y_test)

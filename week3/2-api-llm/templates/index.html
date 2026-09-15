@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Q&A</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 20px;
+      }
+      textarea {
+        width: 100%;
+        min-height: 100px;
+        margin-bottom: 12px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 10px 16px;
+        cursor: pointer;
+      }
+      #response {
+        margin-top: 20px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        background: #f9f9f9;
+        white-space: pre-wrap;
+      }
+      #error {
+        color: #b00020;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ask the AI</h1>
+    <textarea id="question" placeholder="Type your question here..."></textarea>
+    <button id="submitBtn">Submit</button>
+
+    <div id="response">Response will appear here.</div>
+    <div id="error"></div>
+
+    <script>
+      const submitBtn = document.getElementById('submitBtn');
+      const questionInput = document.getElementById('question');
+      const responseBox = document.getElementById('response');
+      const errorBox = document.getElementById('error');
+
+      submitBtn.addEventListener('click', async () => {
+        const question = questionInput.value.trim();
+        if (!question) {
+          errorBox.textContent = 'Please enter a question.';
+          return;
+        }
+
+        errorBox.textContent = '';
+        responseBox.textContent = 'Loading...';
+
+        try {
+          const response = await fetch('/ask', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question })
+          });
+
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.error || 'Request failed');
+          }
+
+          responseBox.textContent = data.answer;
+        } catch (error) {
+          responseBox.textContent = 'Error';
+          errorBox.textContent = error.message;
+        }
+      });
+    </script>
+  </body>
+</html>

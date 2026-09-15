@@ -7,7 +7,7 @@ This file documents the exact prompt used to generate this project. It can be us
 ```
 Create a very small Python application directly inside this existing folder:
 
-`/Users/nathalia/VisualStudio/psgv-sweng889/week3/2-api-llm`
+`/Users/gulnaraldasheva/VisualStudio/psgv-sweng889/week3/2-api-llm`
 
 Do NOT create another project folder.
 
