@@ -1,5 +1,7 @@
 # Facilities API — starter repository
 
+Source: https://github.com/jmrthms/sdd-starter-repo
+
 A small records API with two model-backed endpoints already working. It is the starting
 point for the Week 5 specification exercise: you will add a substantial feature to it
 from a written specification, handed to an agent that has never seen your conversation.
